@@ -1,0 +1,117 @@
+@import 'scss/vars';
+@import 'scss/mixins';
+
+body {
+    font-family: $font;
+    background-color: $bg-color;
+    color: $text-color;
+    font-size: $font-size;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    max-width: $max-container;
+    margin: 2*$gap auto;
+    background-color: lighten($color: $bg-color, $amount: 10%);
+    border-radius: 2*$gap;
+    display: flex;
+    min-height: calc(100vh - #{4*$gap});
+    @include linear-gradient($primary, $secondary, 180deg);
+
+    @media screen and (max-width: $max-container) {
+        margin: $gap;
+        min-height: calc(100vh - #{2*$gap});
+    }
+    @media screen and (max-width: 767px) {
+        margin: 0;
+        border-radius: 0;
+        flex-direction: column;
+        min-height: 100vh;
+        @include linear-gradient($primary, $secondary);
+    }
+    
+    .navbar {
+        padding: 2*$gap $gap;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        &-logo {
+            img {
+                max-width: 80px;
+                filter: drop-shadow(rgba(0,0,0,.5) 0 1px 2px);
+            }
+            @media screen and (max-width: 767px) {
+                display: none;
+            }
+        }
+        &-menu {
+            position: sticky;
+            top: $gap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5*$gap;
+            a {
+                color: $text-color;
+                text-decoration: none;
+                font-size: .9rem;
+                margin-bottom: 2*$gap;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-shadow: rgba(0,0,0,.5) 0 1px 2px;
+                opacity: .6;
+                transition: 300ms ease;
+                i {
+                    font-size: 2rem;
+                    margin-bottom: $gap/3;
+                }
+                &:hover, &.active {
+                    opacity: 1;
+                }
+            }
+            @media screen and (max-width: 767px) {
+                flex-direction: row;
+                margin-top: 0;
+                justify-content: space-evenly;
+                flex-grow: 1;
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                padding: $gap;
+                width: 100%;
+                box-sizing: border-box;
+                @include linear-gradient($primary, $secondary);
+                a {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        @media screen and (max-width: 767px) {
+            flex-direction: row;
+            order: 2;
+        }
+    }
+
+    .content {
+        padding: 2*$gap;
+        background-color: lighten($color: $bg-color, $amount: 20%);
+        flex-grow: 1;
+        border-radius: 2*$gap;
+        h1 {
+            font-size: 3rem;
+            margin-top: 0;
+            @include linear-gradient($text-primary, $text-secondary, -80deg);
+            display: inline-block;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @media screen and (max-width: 767px) {
+            border-radius: 0;
+        }
+    }
+
+}

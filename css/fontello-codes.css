@@ -1,0 +1,6 @@
+
+.icon-cpu:before { content: '\e800'; } /* '' */
+.icon-mb:before { content: '\e802'; } /* '' */
+.icon-ram:before { content: '\e803'; } /* '' */
+.icon-ssd:before { content: '\e804'; } /* '' */
+.icon-gpu:before { content: '\e805'; } /* '' */
